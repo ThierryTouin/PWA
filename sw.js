@@ -37,10 +37,12 @@ self.addEventListener('fetch', evt => {
         caches.match( evt.request ).then( res => {
             console.log('Match with cache !');
             if (res) {
+                console.log(`Url fetchée depuis le cache ${evt.request.url}`, res);
                 return res;
             } 
             return fetch(evt.request).then( newResponse => {
-                caches.open(cacheName).then( cache => cache.put(evt.resquest, newResponse));
+                console.log(`Url récupérée sur le réseau puis mise en cache ${evt.request.url}`, res, newResponse);
+                caches.open(cacheName).then( cache => cache.put(evt.request, newResponse));
                 return newResponse.clone();
             })
             
