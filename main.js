@@ -30,6 +30,7 @@ if (window.caches) {
     //caches.open('veille-techno-1.0');
     //caches.open('other-1.0');
 
+    /*
     caches.open('veille-techno-1.0').then( cache => {
         cache.addAll([
             'index.html',
@@ -37,7 +38,7 @@ if (window.caches) {
             'vendors/bootstrap4.min.css'
         ])
     })
-
+    */
 
     caches.keys().then(console.log);
 }
