@@ -11,3 +11,9 @@ npm start
 ```
 npm run jsonserver
 ```
+
+# check api response
+
+```
+http://localhost:3001/technos
+```

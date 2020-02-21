@@ -18,7 +18,26 @@ function loadTechnologies(technos) {
 loadTechnologies(technos);
 
 
+/* si mon navigateur supporte les service worker alors j'enregistre le mien */
 if (navigator.serviceWorker) {
     navigator.serviceWorker.register('sw.js')
         .catch(err => console.log(err));
+}
+
+
+/* gestion du cache */
+if (window.caches) {
+    //caches.open('veille-techno-1.0');
+    //caches.open('other-1.0');
+
+    caches.open('veille-techno-1.0').then( cache => {
+        cache.addAll([
+            'index.html',
+            'main.js',
+            'vendors/bootstrap4.min.css'
+        ])
+    })
+
+
+    caches.keys().then(console.log);
 }
