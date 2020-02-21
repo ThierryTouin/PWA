@@ -24,15 +24,18 @@ self.addEventListener('activate', evt => {
 
 self.addEventListener('fetch', evt => {
 
+    /*
     if (!navigator.onLine) {
         const headers = { headers : { 'content-type' : 'text/html;charset=utf-8'}};
         evt.respondWith(new Response('<h1>Pas de connection Internet. éééé, Veuillez vous connecter !</h1>',headers));
     }
+    */
 
     console.log('fetch evt sur url : ', evt.request.url);
 
 
     // Stratégie : cache only with network fallback
+    /*
     evt.respondWith(
         caches.match( evt.request ).then( res => {
             console.log('Match with cache !');
@@ -48,4 +51,21 @@ self.addEventListener('fetch', evt => {
             
         }    
     ))
+    */
+
+    // Stratégie : network with cache fallback
+    evt.respondWith(
+
+        fetch(evt.request).then(res => {
+            console.log(`${evt.request.url} fetchée depuis le réseau`);
+            caches.open(cacheName).then( cache => cache.put(evt.request, res));
+            return res.clone();
+        }).catch( err => {
+            console.log(`${evt.request.url} fetchée depuis le cache`);
+            return caches.match(evt.request)
+        }
+        )
+
+    );
+
 })
