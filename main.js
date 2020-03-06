@@ -42,3 +42,20 @@ if (window.caches) {
 
     caches.keys().then(console.log);
 }
+
+
+/* Notifications */
+if (window.Notification && window.Notification !== 'denied') {
+    Notification.requestPermission( perm => {
+        if(perm === 'granted') {
+            const options = {
+                body : 'salut, je suis le body de la notification',
+                icon : 'images/icons/icon-72x72.png'
+            }
+
+            const notif = new Notification('Hello notification',options);
+        } else {
+            console.log('L\'autorisation de recevoir des notifications a été refusée');
+        }
+    })
+}
