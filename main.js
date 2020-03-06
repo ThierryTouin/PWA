@@ -53,7 +53,7 @@ if (window.Notification && window.Notification !== 'denied') {
                 icon : 'images/icons/icon-72x72.png'
             }
 
-            const notif = new Notification('Hello notification',options);
+            //const notif = new Notification('Hello notification',options);
         } else {
             console.log('L\'autorisation de recevoir des notifications a été refusée');
         }

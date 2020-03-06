@@ -19,7 +19,7 @@ self.addEventListener('install', evt => {
     });
 
     evt.waitUntil(cachePromise);
-})
+});
 
 self.addEventListener('activate', evt => {
     console.log('activate evt : ', evt);
@@ -34,7 +34,7 @@ self.addEventListener('activate', evt => {
 
     evt.waitUntil(cacheCleanPromise);
 
-})
+});
 
 self.addEventListener('fetch', evt => {
 
@@ -82,4 +82,29 @@ self.addEventListener('fetch', evt => {
 
     );
 
+});
+
+
+self.registration.showNotification('Notification depuis le service worker',{
+    body : 'body de la notification persistante',
+    actions : [
+        {action : 'accept', title : 'accepter'},
+        {action : 'refuse', title : 'refuser'}
+    ]
+});
+
+self.addEventListener('notificationclose', evt => {
+    console.log('notification fermée', evt);
+});
+
+self.addEventListener('notificationclick', evt => {
+    if (evt.action === 'accept' ) {
+        console.log('Vous avez accepté');
+    } else if (evt.acion === 'refuse') {
+        console.log('Vous avez refusé'); 
+    } else {
+        console.log('Vous avez cliqué sur la notification mais pas sur les boutons !');
+    };
+
+    evt.notification.close();
 })
