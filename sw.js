@@ -1,11 +1,12 @@
 console.log("hello depuis le service worker");
 
-const cacheName = 'veille-techno-1.0';
+const cacheName = 'veille-techno-1.2';
 
 self.addEventListener('install', evt => {
     console.log('install evt : ' , evt);
-    caches.open(cacheName).then( cache => {
-        cache.addAll([
+
+    const cachePromise = caches.open(cacheName).then( cache => {
+        return cache.addAll([
             'index.html',
             'main.js',
             'vendors/bootstrap4.min.css',
@@ -15,11 +16,24 @@ self.addEventListener('install', evt => {
             'contact.html',
             'contact.js',
         ])
-    })
+    });
+
+    evt.waitUntil(cachePromise);
 })
 
 self.addEventListener('activate', evt => {
     console.log('activate evt : ', evt);
+
+    let cacheCleanPromise = caches.keys().then( keys => {
+        keys.forEach( key => {
+            if (key !== cacheName) {
+                return caches.delete(key);
+            }
+        })
+    })
+
+    evt.waitUntil(cacheCleanPromise);
+
 })
 
 self.addEventListener('fetch', evt => {
