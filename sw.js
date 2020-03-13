@@ -84,6 +84,9 @@ self.addEventListener('fetch', evt => {
 
 });
 
+/*
+
+// Notification classique
 
 self.registration.showNotification('Notification depuis le service worker',{
     body : 'body de la notification persistante',
@@ -108,3 +111,21 @@ self.addEventListener('notificationclick', evt => {
 
     evt.notification.close();
 })
+
+*/
+
+self.addEventListener('push', evt => {
+    console.log('push evt = ' , evt);
+    console.log('push evt data text = ' , evt.data.text());
+    const title = evt.data.text();
+    
+    evt.waitUntil(self.registration.showNotification('title', { body : 'ça marche', image : 'images/icons/icon-144x144.png'}));
+
+    /*
+    self.registration.showNotification('title', 
+    { 
+        body : 'ça marche', 
+        image : 'images/icons/icon-152x152.png'
+    });
+    */
+});
