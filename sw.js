@@ -119,7 +119,7 @@ self.addEventListener('push', evt => {
     console.log('push evt data text = ' , evt.data.text());
     const title = evt.data.text();
     
-    evt.waitUntil(self.registration.showNotification('title', { body : 'ça marche', image : 'images/icons/icon-144x144.png'}));
+    evt.waitUntil(self.registration.showNotification(title, { body : 'ça marche', image : 'images/icons/icon-144x144.png'}));
 
     /*
     self.registration.showNotification('title', 
