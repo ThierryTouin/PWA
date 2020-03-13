@@ -34,10 +34,14 @@ npm install web-push -g
 
 une PWA fonctionne en http mais avec localhost sinon https obligatoire
 
+
+to use in remote **https://thierrytouin.github.io/PWA/index.html**
+
 # Référence
 
 | Title        | Lien           |
 | ------------- |:-------------|
+| Example of PWA | https://pwa.rocks | 
 | Projet du prof      | https://github.com/codeconcept/pwa_veilletechno |
 | Web Push      | https://github.com/web-push-libs/web-push |
 | mlab | https://www.mlab.com |
