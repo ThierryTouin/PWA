@@ -45,8 +45,7 @@ to use in remote **https://thierrytouin.github.io/PWA/index.html**
 | Projet du prof      | https://github.com/codeconcept/pwa_veilletechno |
 | Web Push      | https://github.com/web-push-libs/web-push |
 | mlab | https://www.mlab.com |
-| zeit | https://zeit.co/ |
-| test api | https://github.com/codeconcept/nodetestapi |
+| Mettre un service online | https://zeit.co/ |
 | ex de crud pour pwa | https://github.com/codeconcept/nodetestapi |
 | Minimalistic Wrapper for IndexedDB | https://dexie.org/ | 
 | Favicon generator | https://www.favicon-generator.org/ | 
